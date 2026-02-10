@@ -2,6 +2,7 @@
 import React from 'react';
 import { WHATSAPP_LINK } from '../constants';
 
+// Fix: Make children optional to resolve TypeScript errors on lines 79, 86, 94, and 99
 const WorkflowGroup = ({ color, title, children }: { color: string, title: string, children?: React.ReactNode }) => (
   <div className={`p-3 rounded-xl border ${color} bg-slate-900/40 backdrop-blur-md shadow-2xl relative min-w-[200px]`}>
     <div className={`text-[9px] font-bold uppercase tracking-widest mb-3 opacity-70`}>{title}</div>
@@ -18,23 +19,8 @@ const Node = ({ color }: { color: string }) => (
 );
 
 const Hero: React.FC = () => {
-  const handleScrollToSolucoes = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById('solucoes');
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      window.scrollTo({
-        top: elementPosition - offset,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
-    <section id="inicio" className="pt-32 pb-20 px-6 max-w-7xl mx-auto text-center relative scroll-mt-24">
+    <section id="inicio" className="pt-32 pb-20 px-6 max-w-7xl mx-auto text-center relative">
       <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-semibold">
         Enzo Chialastri - Automação 2026
       </div>
@@ -61,17 +47,22 @@ const Hero: React.FC = () => {
         </a>
         <a 
           href="#solucoes"
-          onClick={handleScrollToSolucoes}
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById('solucoes')?.scrollIntoView({ behavior: 'smooth' });
+          }}
           className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-white rounded-xl text-lg font-bold border border-white/10 transition-all flex items-center justify-center"
         >
           Ver soluções
         </a>
       </div>
       
+      {/* Complex n8n Canvas visualization based on user's screen photo */}
       <div className="relative w-full max-w-6xl mx-auto h-[450px] md:h-[550px] bg-[#0d1117] rounded-3xl border border-white/10 overflow-hidden shadow-2xl group flex items-center justify-center">
         <div className="absolute inset-0 opacity-10 pointer-events-none" 
              style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '25px 25px' }}></div>
         
+        {/* Connection Lines (Styled to look like n8n wires) */}
         <svg className="absolute inset-0 w-full h-full stroke-blue-500/20 fill-none" viewBox="0 0 1000 500">
            <path d="M100,250 C200,250 200,100 300,100" strokeWidth="2" />
            <path d="M300,100 L500,100" strokeWidth="2" />
@@ -83,31 +74,43 @@ const Hero: React.FC = () => {
         </svg>
 
         <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+          {/* Start Trigger */}
           <div className="p-4 bg-orange-600 rounded-lg shadow-xl shadow-orange-600/20 flex items-center justify-center animate-pulse">
             <span className="text-white font-bold text-xs">TRIGGER</span>
           </div>
+
           <div className="flex flex-col gap-12">
+            {/* Group 1 - Input/Processing */}
             <WorkflowGroup color="border-green-500/30" title="Data Ingestion">
               <Node color="bg-green-600/80" />
               <Node color="bg-green-600/80" />
               <Node color="bg-green-600/80" />
             </WorkflowGroup>
+
+            {/* Group 2 - AI Logic */}
             <WorkflowGroup color="border-blue-500/30" title="Gemini Intelligence">
               <Node color="bg-blue-600/80" />
               <Node color="bg-indigo-600/80" />
             </WorkflowGroup>
           </div>
+
           <div className="flex flex-col gap-12">
+             {/* Group 3 - CRM/Output */}
              <WorkflowGroup color="border-red-500/30" title="Actions & Notif">
               <Node color="bg-red-600/80" />
               <Node color="bg-red-600/80" />
             </WorkflowGroup>
+
             <WorkflowGroup color="border-purple-500/30" title="Persistence">
               <Node color="bg-purple-600/80" />
             </WorkflowGroup>
           </div>
         </div>
+
+        {/* Overlay reflection effect */}
         <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-transparent"></div>
+        
+        {/* Floating elements to mimic UI icons in n8n */}
         <div className="absolute bottom-6 right-6 flex gap-3">
           <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs opacity-50">+</div>
           <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs opacity-50">?</div>

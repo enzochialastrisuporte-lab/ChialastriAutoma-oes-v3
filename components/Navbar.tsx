@@ -7,28 +7,15 @@ const Navbar: React.FC = () => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80; // Compensação para o header fixo
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      
+      element.scrollIntoView({ behavior: 'smooth' });
+      // Atualiza a URL sem recarregar a página
       window.history.pushState(null, '', `#${id}`);
     }
   };
 
   return (
     <nav className="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center glass border-b border-white/5">
-      <div className="flex items-center gap-2 cursor-pointer" onClick={(e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        window.history.pushState(null, '', '/');
-      }}>
+      <div className="flex items-center gap-2">
         <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-xl shadow-lg shadow-blue-500/20">
           C
         </div>
