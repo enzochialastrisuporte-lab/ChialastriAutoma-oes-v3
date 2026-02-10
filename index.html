@@ -5,42 +5,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="ChialastriAutomações - Especialista em n8n. Automatize processos, reduza custos e escale sua empresa com Enzo Chialastri." />
-    <meta name="keywords" content="automação de processos, n8n, automação whatsapp, automação empresarial, inteligência artificial" />
     <title>ChialastriAutomações | Especialista n8n & IA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
+      :root {
+        --primary: #2563eb;
+        --accent: #818cf8;
+        --bg: #09090b;
+      }
       body {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        background-color: #09090b;
+        background-color: var(--bg);
         color: #fafafa;
         overflow-x: hidden;
       }
+      .font-mono { font-family: 'JetBrains Mono', monospace; }
+      
       .glass {
-        background: rgba(255, 255, 255, 0.02);
-        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.015);
+        backdrop-filter: blur(16px);
         border: 1px solid rgba(255, 255, 255, 0.08);
       }
-      @keyframes float {
+      
+      .glass-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      @keyframes float-balloon {
         0%, 100% { transform: translateY(0px) rotate(0deg); }
-        33% { transform: translateY(-15px) rotate(1deg); }
-        66% { transform: translateY(5px) rotate(-1deg); }
+        33% { transform: translateY(-20px) rotate(2deg); }
+        66% { transform: translateY(10px) rotate(-1deg); }
       }
-      .animate-puzzle-piece {
-        animation: float 8s ease-in-out infinite;
+
+      .balloon-animation {
+        animation: float-balloon 10s ease-in-out infinite;
       }
-      .animate-puzzle-piece-delayed {
-        animation: float 10s ease-in-out infinite;
-        animation-delay: 2s;
+
+      .balloon-animation-slow {
+        animation: float-balloon 14s ease-in-out infinite;
+        animation-delay: -3s;
       }
-      .glow-blue {
-        box-shadow: 0 0 40px -10px rgba(37, 99, 235, 0.3);
+
+      .glow-text {
+        text-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
       }
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #09090b; }
-      ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 10px; }
+
+      ::-webkit-scrollbar { width: 5px; }
+      ::-webkit-scrollbar-track { background: var(--bg); }
+      ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
     </style>
     <script type="importmap">
 {
