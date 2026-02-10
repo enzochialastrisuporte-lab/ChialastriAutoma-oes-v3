@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import InteractivePuzzle from './components/InteractivePuzzle';
 import WhyN8N from './components/WhyN8N';
+import Infrastructure from './components/Infrastructure';
 import GeminiConsultant from './components/GeminiConsultant';
 import Benefits from './components/Benefits';
 import Footer from './components/Footer';
@@ -17,6 +18,7 @@ export default function App() {
         <Hero />
         <InteractivePuzzle />
         <WhyN8N />
+        <Infrastructure />
         <GeminiConsultant />
         <Benefits />
       </main>
