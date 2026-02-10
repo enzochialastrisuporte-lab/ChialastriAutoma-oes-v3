@@ -3,14 +3,25 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
-}
+const startApp = () => {
+  const rootElement = document.getElementById('root');
+  if (!rootElement) {
+    console.error("Não foi possível encontrar o elemento root para montar a aplicação.");
+    return;
+  }
 
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+};
+
+// Garante que o script rode após o carregamento do DOM se necessário, 
+// embora com 'type=module' ele já aguarde por padrão.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startApp);
+} else {
+  startApp();
+}
