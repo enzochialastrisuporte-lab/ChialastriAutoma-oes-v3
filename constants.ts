@@ -1,30 +1,35 @@
 
-export const WHATSAPP_LINK = "https://wa.me/5534993347153?text=Ol%C3%A1%2C%20qual%20%C3%A9%20o%20seu%20nome%3F%20Gostaria%20de%20automatizar%20minha%20empresa.";
+export const WHATSAPP_LINK = "https://wa.me/5534993347153?text=Ol%C3%A1%2C%20Enzo!%20Vim%20pelo%20site%20e%20gostaria%20de%20automatizar%20minha%20empresa.";
 
 export const PUZZLE_ITEMS = [
   {
-    title: "Atendimento WhatsApp",
-    description: "Chatbots inteligentes que atendem, qualificam e vendem 24 horas por dia, 7 dias por semana.",
-    icon: "💬"
+    title: "Atendimento 24/7",
+    description: "Chatbots inteligentes que qualificam leads e vendem enquanto você dorme, integrados ao seu CRM.",
+    icon: "💬",
+    color: "from-blue-500/20 to-indigo-500/20"
   },
   {
-    title: "Integração de Sistemas",
-    description: "Conecte seu CRM, ERP e planilhas em um fluxo de trabalho unificado.",
-    icon: "🔗"
+    title: "Integração Total",
+    description: "Conectamos todas as suas ferramentas (ERP, Planilhas, Bancos de Dados) em um único ecossistema fluido.",
+    icon: "🔗",
+    color: "from-purple-500/20 to-pink-500/20"
   },
   {
-    title: "Automação de Vendas",
-    description: "Acompanhamentos automáticos e gestão de funil sem necessidade de esforço humano repetitivo.",
-    icon: "🚀"
+    title: "Vendas Automáticas",
+    description: "Follow-ups automáticos e disparos estratégicos baseados no comportamento do seu cliente.",
+    icon: "🚀",
+    color: "from-orange-500/20 to-red-500/20"
   },
   {
-    title: "Agendamentos Inteligentes",
-    description: "Sincronização de calendários e envio de lembretes automáticos para seus clientes.",
-    icon: "📅"
+    title: "Agendamentos",
+    description: "Seu cliente agenda uma reunião e o fluxo cria o link, envia lembretes e atualiza sua agenda sozinho.",
+    icon: "📅",
+    color: "from-green-500/20 to-emerald-500/20"
   },
   {
-    title: "Redução de Custos",
-    description: "Substitua tarefas manuais por fluxos lógicos, rápidos e extremamente eficientes.",
-    icon: "💰"
+    title: "Custos Reduzidos",
+    description: "Substitua centenas de horas de trabalho manual por segundos de processamento lógico e infalível.",
+    icon: "💰",
+    color: "from-yellow-500/20 to-orange-500/20"
   }
 ];

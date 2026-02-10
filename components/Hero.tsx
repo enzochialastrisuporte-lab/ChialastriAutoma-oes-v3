@@ -2,124 +2,90 @@
 import React from 'react';
 import { WHATSAPP_LINK } from '../constants';
 
-// Fix: Make children optional to resolve TypeScript errors on lines 79, 86, 94, and 99
-const WorkflowGroup = ({ color, title, children }: { color: string, title: string, children?: React.ReactNode }) => (
-  <div className={`p-3 rounded-xl border ${color} bg-slate-900/40 backdrop-blur-md shadow-2xl relative min-w-[200px]`}>
-    <div className={`text-[9px] font-bold uppercase tracking-widest mb-3 opacity-70`}>{title}</div>
-    <div className="flex gap-2">
-      {children}
-    </div>
-  </div>
-);
-
-const Node = ({ color }: { color: string }) => (
-  <div className={`w-10 h-10 rounded border border-white/10 ${color} flex items-center justify-center shadow-lg transition-transform hover:scale-110 cursor-crosshair`}>
-    <div className="w-4 h-4 rounded-sm bg-white/20"></div>
-  </div>
-);
-
 const Hero: React.FC = () => {
   return (
-    <section id="inicio" className="pt-32 pb-20 px-6 max-w-7xl mx-auto text-center relative">
-      <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-semibold">
-        Enzo Chialastri - Automação 2026
+    <section id="inicio" className="relative pt-40 pb-20 px-6 min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* Dynamic Background */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
-      
-      <h1 className="text-4xl md:text-7xl font-extrabold mb-8 tracking-tight bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent leading-tight">
-        Automatize sua empresa de forma <br className="hidden md:block"/> inteligente com o que há de melhor.
-      </h1>
-      
-      <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-        <strong>Enzo Chialastri</strong>: Especialista em <span className="text-blue-400 font-semibold">n8n</span> para criar fluxos complexos, escaláveis e inteligentes para empresas que buscam eficiência máxima.
-      </p>
-      
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-        <a 
-          href={WHATSAPP_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-lg font-bold transition-all shadow-xl shadow-blue-600/30 flex items-center justify-center gap-2 group"
-        >
-          Falar com Enzo agora
-          <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </a>
-        <a 
-          href="#solucoes"
-          onClick={(e) => {
-            e.preventDefault();
-            document.getElementById('solucoes')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-white rounded-xl text-lg font-bold border border-white/10 transition-all flex items-center justify-center"
-        >
-          Ver soluções
-        </a>
-      </div>
-      
-      {/* Complex n8n Canvas visualization based on user's screen photo */}
-      <div className="relative w-full max-w-6xl mx-auto h-[450px] md:h-[550px] bg-[#0d1117] rounded-3xl border border-white/10 overflow-hidden shadow-2xl group flex items-center justify-center">
-        <div className="absolute inset-0 opacity-10 pointer-events-none" 
-             style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '25px 25px' }}></div>
-        
-        {/* Connection Lines (Styled to look like n8n wires) */}
-        <svg className="absolute inset-0 w-full h-full stroke-blue-500/20 fill-none" viewBox="0 0 1000 500">
-           <path d="M100,250 C200,250 200,100 300,100" strokeWidth="2" />
-           <path d="M300,100 L500,100" strokeWidth="2" />
-           <path d="M100,250 C200,250 200,400 300,400" strokeWidth="2" />
-           <path d="M300,400 L500,400" strokeWidth="2" />
-           <path d="M500,100 C600,100 650,250 750,250" strokeWidth="2" />
-           <path d="M500,400 C600,400 650,250 750,250" strokeWidth="2" />
-           <path d="M750,250 L900,250" strokeWidth="2" strokeDasharray="5,5" className="animate-[dash_2s_linear_infinite]" />
-        </svg>
 
-        <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
-          {/* Start Trigger */}
-          <div className="p-4 bg-orange-600 rounded-lg shadow-xl shadow-orange-600/20 flex items-center justify-center animate-pulse">
-            <span className="text-white font-bold text-xs">TRIGGER</span>
-          </div>
-
-          <div className="flex flex-col gap-12">
-            {/* Group 1 - Input/Processing */}
-            <WorkflowGroup color="border-green-500/30" title="Data Ingestion">
-              <Node color="bg-green-600/80" />
-              <Node color="bg-green-600/80" />
-              <Node color="bg-green-600/80" />
-            </WorkflowGroup>
-
-            {/* Group 2 - AI Logic */}
-            <WorkflowGroup color="border-blue-500/30" title="Gemini Intelligence">
-              <Node color="bg-blue-600/80" />
-              <Node color="bg-indigo-600/80" />
-            </WorkflowGroup>
-          </div>
-
-          <div className="flex flex-col gap-12">
-             {/* Group 3 - CRM/Output */}
-             <WorkflowGroup color="border-red-500/30" title="Actions & Notif">
-              <Node color="bg-red-600/80" />
-              <Node color="bg-red-600/80" />
-            </WorkflowGroup>
-
-            <WorkflowGroup color="border-purple-500/30" title="Persistence">
-              <Node color="bg-purple-600/80" />
-            </WorkflowGroup>
-          </div>
+      <div className="relative z-10 max-w-6xl mx-auto text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-blue-500/20 text-blue-400 text-sm font-bold mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
+          AUTOMAÇÃO 2026: EXPERT EM N8N
         </div>
 
-        {/* Overlay reflection effect */}
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-transparent"></div>
-        
-        {/* Floating elements to mimic UI icons in n8n */}
-        <div className="absolute bottom-6 right-6 flex gap-3">
-          <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs opacity-50">+</div>
-          <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs opacity-50">?</div>
-          <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-xs shadow-lg">▶</div>
+        <h1 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[1] bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
+          Automatize seu negócio <br className="hidden md:block" /> de forma <span className="text-blue-600 italic">inteligente.</span>
+        </h1>
+
+        <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 font-medium leading-relaxed">
+          Usamos <strong>n8n</strong> para criar fluxos personalizados e escaláveis que libertam sua equipe do trabalho manual e multiplicam seus resultados.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
+          <a 
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl text-xl font-black transition-all shadow-2xl shadow-blue-600/40 flex items-center justify-center gap-3 active:scale-95 group"
+          >
+            Quero automatizar minha empresa
+            <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a 
+            href="#solucoes"
+            className="w-full sm:w-auto px-10 py-5 glass hover:bg-white/5 text-white rounded-2xl text-xl font-bold transition-all border-white/10"
+          >
+            Conhecer soluções
+          </a>
+        </div>
+
+        {/* Mock n8n Interface */}
+        <div className="relative max-w-5xl mx-auto glass rounded-3xl p-4 md:p-8 border-white/5 glow-blue group">
+           <div className="absolute inset-0 bg-zinc-950/40 rounded-3xl pointer-events-none"></div>
+           <div className="relative flex flex-col md:flex-row items-center justify-between gap-8 py-10">
+              <div className="w-20 h-20 rounded-2xl bg-orange-600 flex items-center justify-center shadow-xl animate-pulse">
+                <span className="font-black">START</span>
+              </div>
+              
+              <div className="hidden md:block w-32 h-[2px] bg-gradient-to-r from-orange-600 to-blue-600 relative overflow-hidden">
+                <div className="absolute inset-0 bg-white/40 animate-[flow_2s_linear_infinite]"></div>
+              </div>
+
+              <div className="p-6 glass border-blue-500/30 rounded-2xl flex items-center gap-4">
+                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">🧠</div>
+                <div className="text-left">
+                  <div className="text-[10px] text-blue-400 font-bold uppercase tracking-widest">IA Processing</div>
+                  <div className="text-sm font-bold">Gemini 3 Flash</div>
+                </div>
+              </div>
+
+              <div className="hidden md:block w-32 h-[2px] bg-gradient-to-r from-blue-600 to-green-600 relative overflow-hidden">
+                <div className="absolute inset-0 bg-white/40 animate-[flow_2s_linear_infinite_0.5s]"></div>
+              </div>
+
+              <div className="w-20 h-20 rounded-2xl bg-green-600 flex items-center justify-center shadow-xl">
+                <span className="font-black">DONE</span>
+              </div>
+           </div>
+           
+           <div className="flex justify-center gap-3 mt-4 opacity-50 text-[10px] font-mono">
+              <span className="text-blue-500">n8n v2.0</span>
+              <span>-</span>
+              <span>Execução 100% Ok</span>
+           </div>
         </div>
       </div>
+
       <style>{`
-        @keyframes dash {
-          to { stroke-dashoffset: -10; }
+        @keyframes flow {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
         }
       `}</style>
     </section>

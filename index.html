@@ -4,7 +4,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ChialastriAutomações | Automação com n8n</title>
+    <meta name="description" content="ChialastriAutomações - Especialista em n8n. Automatize processos, reduza custos e escale sua empresa com Enzo Chialastri." />
+    <meta name="keywords" content="automação de processos, n8n, automação whatsapp, automação empresarial, inteligência artificial" />
+    <title>ChialastriAutomações | Especialista n8n & IA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,48 +14,33 @@
     <style>
       body {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        background-color: #030712;
-        color: #f3f4f6;
+        background-color: #09090b;
+        color: #fafafa;
+        overflow-x: hidden;
       }
       .glass {
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(255, 255, 255, 0.02);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
       @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        33% { transform: translateY(-15px) rotate(1deg); }
+        66% { transform: translateY(5px) rotate(-1deg); }
       }
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
+      .animate-puzzle-piece {
+        animation: float 8s ease-in-out infinite;
       }
-      ::-webkit-scrollbar {
-        width: 8px;
+      .animate-puzzle-piece-delayed {
+        animation: float 10s ease-in-out infinite;
+        animation-delay: 2s;
       }
-      ::-webkit-scrollbar-track {
-        background: #030712;
+      .glow-blue {
+        box-shadow: 0 0 40px -10px rgba(37, 99, 235, 0.3);
       }
-      ::-webkit-scrollbar-thumb {
-        background: #3b82f6;
-        border-radius: 10px;
-      }
-      @keyframes fade-in {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      @keyframes slide-in-bottom {
-        from { transform: translateY(20px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-      }
-      .animate-in {
-        animation-fill-mode: both;
-      }
-      .fade-in {
-        animation: fade-in 0.5s ease-out;
-      }
-      .slide-in-from-bottom-4 {
-        animation: slide-in-bottom 0.5s ease-out;
-      }
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #09090b; }
+      ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 10px; }
     </style>
     <script type="importmap">
 {
