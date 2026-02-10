@@ -3,6 +3,24 @@ import React from 'react';
 import { WHATSAPP_LINK } from '../constants';
 
 const Hero: React.FC = () => {
+  const scrollToSolucoes = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById('solucoes');
+    if (element) {
+      const offset = 100; // Espaço para a navbar fixa
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
+      // Atualiza a URL sem recarregar
+      window.history.pushState(null, '', '#solucoes');
+    }
+  };
+
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center pt-24 pb-12 px-6 overflow-hidden">
       {/* Background Orbs */}
@@ -41,6 +59,7 @@ const Hero: React.FC = () => {
             </a>
             <a 
               href="#solucoes"
+              onClick={scrollToSolucoes}
               className="px-8 py-5 glass border-white/10 text-white rounded-2xl text-lg font-bold hover:bg-white/5 transition-all text-center"
             >
               Ver Soluções
